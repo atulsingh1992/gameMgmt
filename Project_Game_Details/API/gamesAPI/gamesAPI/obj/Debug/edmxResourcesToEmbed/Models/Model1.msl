@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gamesModelStoreContainer" CdmEntityContainer="gamesEntities">
+    <EntitySetMapping Name="gameDetails">
+      <EntityTypeMapping TypeName="gamesModel.gameDetail">
+        <MappingFragment StoreEntitySet="gameDetails">
+          <ScalarProperty Name="game_Id" ColumnName="game_Id" />
+          <ScalarProperty Name="game_Name" ColumnName="game_Name" />
+          <ScalarProperty Name="game_description" ColumnName="game_description" />
+          <ScalarProperty Name="game_releaseDate" ColumnName="game_releaseDate" />
+          <ScalarProperty Name="game_rating" ColumnName="game_rating" />
+          <ScalarProperty Name="game_feedback" ColumnName="game_feedback" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spAddGame" FunctionName="gamesModel.Store.spAddGame" />
+    <FunctionImportMapping FunctionImportName="spDeleteGame" FunctionName="gamesModel.Store.spDeleteGame" />
+    <FunctionImportMapping FunctionImportName="spGetAllGames" FunctionName="gamesModel.Store.spGetAllGames">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gamesModel.spGetAllGames_Result">
+          <ScalarProperty Name="game_Id" ColumnName="game_Id" />
+          <ScalarProperty Name="game_Name" ColumnName="game_Name" />
+          <ScalarProperty Name="game_description" ColumnName="game_description" />
+          <ScalarProperty Name="game_releaseDate" ColumnName="game_releaseDate" />
+          <ScalarProperty Name="game_rating" ColumnName="game_rating" />
+          <ScalarProperty Name="game_feedback" ColumnName="game_feedback" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spUpdateStudent" FunctionName="gamesModel.Store.spUpdateStudent" />
+  </EntityContainerMapping>
+</Mapping>

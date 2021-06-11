@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gamesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="gameDetail">
+    <Key>
+      <PropertyRef Name="game_Id" />
+    </Key>
+    <Property Name="game_Id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="game_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="game_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="game_releaseDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="game_rating" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="game_feedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="gamesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="gameDetails" EntityType="Self.gameDetail" />
+    <FunctionImport Name="spAddGame">
+      <Parameter Name="game_Name" Mode="In" Type="String" />
+      <Parameter Name="game_description" Mode="In" Type="String" />
+      <Parameter Name="game_releaseDate" Mode="In" Type="DateTime" />
+      <Parameter Name="game_rating" Mode="In" Type="Decimal" />
+      <Parameter Name="game_feedback" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spDeleteGame">
+      <Parameter Name="game_Id" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="spGetAllGames" ReturnType="Collection(gamesModel.spGetAllGames_Result)" />
+    <FunctionImport Name="spUpdateStudent">
+      <Parameter Name="game_Id" Mode="In" Type="Decimal" />
+      <Parameter Name="game_Name" Mode="In" Type="String" />
+      <Parameter Name="game_description" Mode="In" Type="String" />
+      <Parameter Name="game_releaseDate" Mode="In" Type="DateTime" />
+      <Parameter Name="game_rating" Mode="In" Type="Decimal" />
+      <Parameter Name="game_feedback" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="spGetAllGames_Result">
+    <Property Type="Decimal" Name="game_Id" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="game_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="game_description" Nullable="false" />
+    <Property Type="DateTime" Name="game_releaseDate" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="game_rating" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="game_feedback" Nullable="true" />
+  </ComplexType>
+</Schema>

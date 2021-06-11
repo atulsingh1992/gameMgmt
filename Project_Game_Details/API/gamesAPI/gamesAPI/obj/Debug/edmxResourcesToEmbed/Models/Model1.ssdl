@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gamesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="gameDetails">
+    <Key>
+      <PropertyRef Name="game_Id" />
+    </Key>
+    <Property Name="game_Id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="game_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="game_description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="game_releaseDate" Type="datetime" Nullable="false" />
+    <Property Name="game_rating" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="game_feedback" Type="nvarchar(max)" />
+  </EntityType>
+  <Function Name="spAddGame" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="game_Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="game_description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="game_releaseDate" Type="datetime" Mode="In" />
+    <Parameter Name="game_rating" Type="numeric" Mode="In" />
+    <Parameter Name="game_feedback" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="spDeleteGame" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="game_Id" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="spGetAllGames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spUpdateStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="game_Id" Type="numeric" Mode="In" />
+    <Parameter Name="game_Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="game_description" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="game_releaseDate" Type="datetime" Mode="In" />
+    <Parameter Name="game_rating" Type="numeric" Mode="In" />
+    <Parameter Name="game_feedback" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <EntityContainer Name="gamesModelStoreContainer">
+    <EntitySet Name="gameDetails" EntityType="Self.gameDetails" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

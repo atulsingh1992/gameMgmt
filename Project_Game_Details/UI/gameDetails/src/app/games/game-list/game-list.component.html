@@ -1,0 +1,24 @@
+<table class="table table-striped table-hover table-lg" style="background-color:white">
+    <thead style="background-color:black">
+        <tr>
+        <td  style="color:white">Game Name</td>
+        <td  style="color:white">Description</td>
+        <td  style="color:white">Release Date</td>
+        <td  style="color:white">Rating</td>
+        <td  style="color:white">Feedback</td>
+        <td  style="color:red" >Delete</td>
+    </tr>
+    </thead>
+    <tr *ngFor="let game of service.list">
+        <td data-toggle="tooltip" data-placement="left" title="Click on row to Update" (click)="detail(game)">{{game.game_Name}}</td>
+        <td (click)="detail(game)">{{game.game_description}}</td>
+        <td (click)="detail(game)">{{game.game_releaseDate | date:'medium' }}</td>
+        <td (click)="detail(game)">{{game.game_rating}}</td>
+        <td (click)="detail(game)">{{game.game_feedback}}</td>
+        <td><button (click)="onDelete(game)" type="button" style="color: red;" class="close" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+            <!-- <button (click)="onDelete(game)" class="btn btn-sm btn-danger"></button> -->
+        </td>
+    </tr>
+</table>

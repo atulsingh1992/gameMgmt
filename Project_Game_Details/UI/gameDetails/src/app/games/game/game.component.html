@@ -1,0 +1,54 @@
+<form #form="ngForm"  (submit)="onSubmit(form)">
+<input type="hidden" name="game_Id" #game_Id="ngModel" [(ngModel)]="service.formData.game_Id">
+ <div class="form-group">
+    <label>Game Name*</label>
+    <input name="game_Name" #game_Name="ngModel" [(ngModel)]="service.formData.game_Name" class="form-control" required>
+  </div>
+
+ <div class="form-group">
+    <label>Game Description*</label>
+    <input name="game_description" #game_description="ngModel" [(ngModel)]="service.formData.game_description" class="form-control" required>
+  </div>
+
+ <div class="form-group">
+    <label>Game Release Date*</label>
+    <input  type="date" name="game_releaseDate" #game_releaseDate="ngModel" [(ngModel)]="service.formData.game_releaseDate" class="form-control" required>
+  </div>
+
+
+ <div class="form-group">
+    <label>Game Rating*</label>
+    <!-- <input name="game_rating" #game_rating="ngModel" [(ngModel)]="service.formData.game_rating" class="form-control" required> -->
+
+    <select name="game_rating" id="game_rating" #game_rating="ngModel"  [(ngModel)]="service.formData.game_rating" class="form-control" required>
+      <option value=1>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      <option value=5>5</option>
+      <option value=6>6</option>
+      <option value=7>7</option>
+      <option value=8>8</option>
+      <option value=9>9</option>
+      <option value=10>10</option>
+    </select>
+   </div>
+
+<div class="form-group">
+    <label>Game Feedback*</label>
+    <input name="game_feedback" #game_feedback="ngModel" [(ngModel)]="service.formData.game_feedback" class="form-control" required>
+ </div>
+
+
+<div *ngIf="service.insertFlag" class="form-group">
+    <button type="submit" class="btn btn-lg btn-block" style="background-color:green">Add Game Detail</button>
+ </div>
+
+ <div *ngIf="!service.insertFlag"class="form-group">
+   <button type="submit" class="btn btn-lg btn-block" style="background-color:green">Update Game</button>
+</div>
+
+<div *ngIf="!service.insertFlag"class="form-group">
+   <button type="button" (click)="addGame()" style="background-color:blue;color: white;" class="btn btn-lg btn-block">Want to add new Game?</button>
+</div>
+</form>
